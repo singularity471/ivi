@@ -1,6 +1,6 @@
 # Project IVI | Ivy Development Team
 
-Interactive Visual Interpreter is meant to help beginner CS students understand their code better. The student enters code in the "Editor" and sees an abstract visual representation in the "Visualizer", while code results are logged to the "Console". The "Navbar" and "Step" button provide a way to walk through your code more slowly - like a debugger. 
+Interactive Visual Interpreter is meant to help beginner CS students understand their code better. The student enters code in the "Editor" and sees an abstract visual representation in the "Visualizer", while code results are logged to the "Console". The "Navbar" and "Step" button provide a way to walk through your code more slowly - like a debugger.  Pressing the "Clear" button in the "Navbar" clears the visualizer, exits any stepping if the user was currently stepping through or running the code, and returns the user to edit mode (in which the user may edit their code).  The next time the user presses the "Step" or "Run" buttons, the code will be executed starting at line 1.
 
 ## Using
 ### Install  

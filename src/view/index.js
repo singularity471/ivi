@@ -29,6 +29,7 @@ export default class Interpreter extends React.Component {
     this.handleCodeChange = this.handleCodeChange.bind(this)
     this.handleRunInterpreter = this.handleRunInterpreter.bind(this)
     this.handleStepInterpreter = this.handleStepInterpreter.bind(this)
+  	this.handleClearInterpreter = this.handleClearInterpreter.bind(this)
   }
 
   evaluateCode() {
@@ -174,6 +175,32 @@ export default class Interpreter extends React.Component {
       this.stepInterpreter()
     }
   }
+  
+  /*
+   * This function clears the visualizer and exits any stepping if user 
+   * is currently stepping (i.e., if the user starts stepping again, it will begin from line 1).
+   * If the the code is currently running, the run is stopped. 
+   * Upon running again, the code will be executed starting at line 1.   
+   * In either case of clearing while stepping or clearing while running, 
+   * the user returns to edit mode.  
+   */
+  handleClearInterpreter(){
+  
+  	clearSketchState()
+  	clearInterval(this.state.autoStepInterval)
+
+  	this.setState({
+        isRunning: false,
+        autoStepInterval: null,
+        isSteppingAutomatically: false,
+        currentStep: 0,
+        interpreterSteps: 0,
+        
+        //code: '', // uncomment this line to clear the code editor
+        //consoleOutput: [], // uncomment this line to clear the console as well
+    })   
+  
+  } // end of handleClearInterpreter function
 
   render() {
     /* break down the interpreter state for the components
@@ -200,7 +227,8 @@ export default class Interpreter extends React.Component {
               <Navbar code={ this.state.code }
                       runMode={ runMode }
                       handleRun={ this.handleRunInterpreter }
-                      handleStep={ this.handleStepInterpreter } />
+                      handleStep={ this.handleStepInterpreter } 
+                      handleClear={ this.handleClearInterpreter }/>
             </div>
             <div style={{ height: 'calc(100% - 70px)', paddingTop: '15px' }}>
               <Editor isRunning={ this.state.isRunning }
