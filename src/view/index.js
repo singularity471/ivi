@@ -181,7 +181,7 @@ export default class Interpreter extends React.Component {
    * is currently stepping (i.e., if the user starts stepping again, it will begin from line 1).
    * If the the code is currently running, the run is stopped. 
    * Upon running again, the code will be executed starting at line 1.   
-   * In either case of clearing while stepping or clearing while running, 
+   * In either case (clearing while stepping or clearing while running), 
    * the user returns to edit mode.  
    */
   handleClearInterpreter(){
